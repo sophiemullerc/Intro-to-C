@@ -8,7 +8,23 @@
 */
 void quicksort(int arr[], int low, int high)
 {
+    if (low < high)
+    {
+        int piv = low;
+ 
+        for (int i = low; i < high; i++)
+        {
+            if (arr[i] < arr[high])
+            {
+                swap(&arr[piv], &arr[i]);
+                piv++;
+            }
+        }
 
+        swap(&arr[piv], &arr[high]);
+        quicksort(arr, low, piv - 1);
+        quicksort(arr, piv + 1, high);
+    }
 }
 
 #ifndef TESTING
